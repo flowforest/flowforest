@@ -1,0 +1,12 @@
+Package: flowForest
+Type: Package
+Title: Random Forest for Flow Cytometry Results
+Version: 1.0.0
+Author: Bartosz P. Piotrowski, Miron B. Kursa
+Maintainer: Bartosz Piotrowski <B.Piotrowski@icm.edu.pl>
+Depends: R (>= 3.0.0)
+Imports: stats
+Suggests: flowCore, GGally, ggplot2
+Description: Random Forest for flow cytometry results.
+License: GPL-3
+RoxygenNote: 6.0.1

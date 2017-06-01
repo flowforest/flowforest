@@ -1,0 +1,17 @@
+*.html
+README.md
+*.o
+*.FCS
+*.fcs
+*.pdf
+*.csv
+*.bin
+*.Rhistory
+*.RData
+*.tape
+*.so
+*.rds
+*.rda
+man/
+inst/doc
+*.tar.gz
