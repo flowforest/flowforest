@@ -12,6 +12,4 @@ README.md
 *.so
 *.rds
 *.rda
-man/
-inst/doc
 *.tar.gz

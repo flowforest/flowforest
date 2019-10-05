@@ -9,4 +9,5 @@ Imports: stats
 Suggests: flowCore, GGally, ggplot2
 Description: Random Forest for flow cytometry results.
 License: GPL-3
-RoxygenNote: 6.0.1
+Encoding: UTF-8
+RoxygenNote: 6.1.1
