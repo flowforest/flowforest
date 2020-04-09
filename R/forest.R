@@ -46,13 +46,14 @@ predict.flowForest<-function(object,x,testMask=1:x[2],type="response",...) {
 #' @param asymmetric If \code{TRUE}, only gates which hold on average more events for the \code{TRUE} class will be taken into account. This is useful to force flowForest to focus on event populations characteristic for the \code{TRUE} class.
 #' @param keepForest Shall the forest structure be saved? This is required for importance and predicting new data, but requires more memory.
 #' @param verbose If \code{TRUE}, performance scores of \code{flowForest} counted on test set and OOB will be printed after growing each tree. Otherwise, only after building whole \code{flowForest}.
+#' @param relaxedGateAccept Accept gates with some event, not only at least one event for all objects.
 #' @return Object of a class \code{flowForest}
 #' @export
 flowForest<-function(
  x,y,
  trainMask=1:x[2],testMask=(1:x[2])[!(1:x[2])%in%trainMask],
  nOfTrees=100,gateTries=5,gateMode='pseudosphere',asymmetric=TRUE,
- keepForest=TRUE,verbose=TRUE
+ keepForest=TRUE,verbose=TRUE,relaxedGateAccept=FALSE
 ){
  # Decision must be binary
  stopifnot(is.logical(y))
@@ -69,6 +70,8 @@ flowForest<-function(
  stopifnot(gateMode%in%c('pseudosphere'))
  stopifnot(is.logical(keepForest)&&(length(keepForest)==1))
 
+ crit<-if(relaxedGateAccept){function(x) max(x)>1} else {function(x) min(x)>1}
+
  makeBestSplit<-function(mask=1:x[2]){
   bestScore<-Inf # Better score is smaller score
   bestGate<-NULL
@@ -83,7 +86,7 @@ flowForest<-function(
 
    # Gate has to have averagely more events in flowframes of objects with positive class and cannot be too small
    if(
-    min(dotResult[,1])>1 && #There is something in the gate
+    crit(dotResult[,1]) && #There is something in the gate
     (!asymmetric||(mean(dotResult[y[mask],1])>mean(dotResult[!y[mask],1]))) #More events for TRUE class
    ){
     # Gate is OK, score a try

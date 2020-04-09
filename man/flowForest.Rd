@@ -4,10 +4,19 @@
 \alias{flowForest}
 \title{Train a flowForest model}
 \usage{
-flowForest(x, y, trainMask = 1:x[2], testMask = (1:x[2])[!(1:x[2])
-  \%in\% trainMask], nOfTrees = 100, gateTries = 5,
-  gateMode = "pseudosphere", asymmetric = TRUE, keepForest = TRUE,
-  verbose = TRUE)
+flowForest(
+  x,
+  y,
+  trainMask = 1:x[2],
+  testMask = (1:x[2])[!(1:x[2]) \%in\% trainMask],
+  nOfTrees = 100,
+  gateTries = 5,
+  gateMode = "pseudosphere",
+  asymmetric = TRUE,
+  keepForest = TRUE,
+  verbose = TRUE,
+  relaxedGateAccept = FALSE
+)
 }
 \arguments{
 \item{x}{Flow cytometry measurements, in a form of an object of the class \code{tubeset}, as that created by the function \code{loadTubeset}.}
@@ -29,6 +38,8 @@ flowForest(x, y, trainMask = 1:x[2], testMask = (1:x[2])[!(1:x[2])
 \item{keepForest}{Shall the forest structure be saved? This is required for importance and predicting new data, but requires more memory.}
 
 \item{verbose}{If \code{TRUE}, performance scores of \code{flowForest} counted on test set and OOB will be printed after growing each tree. Otherwise, only after building whole \code{flowForest}.}
+
+\item{relaxedGateAccept}{Accept gates with some event, not only at least one event for all objects.}
 }
 \value{
 Object of a class \code{flowForest}

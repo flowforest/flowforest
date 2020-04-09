@@ -4,8 +4,15 @@
 \alias{importance}
 \title{Identify predictive cell populations}
 \usage{
-importance(tubeset, flowForest, nOfTube = 1, threshold = 0.95,
-  transparency = 0.1, sizePenalty = TRUE, additionalPlots = FALSE)
+importance(
+  tubeset,
+  flowForest,
+  nOfTube = 1,
+  threshold = 0.95,
+  transparency = 0.1,
+  sizePenalty = TRUE,
+  additionalPlots = FALSE
+)
 }
 \arguments{
 \item{tubeset}{Flow cytometry measurements, in a form of a tubeset, as that created by the function \code{loadTubeset}.}

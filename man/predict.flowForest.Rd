@@ -4,8 +4,7 @@
 \alias{predict.flowForest}
 \title{Predict method for flowForest objects}
 \usage{
-\method{predict}{flowForest}(object, x, testMask = 1:x[2],
-  type = "response", ...)
+\method{predict}{flowForest}(object, x, testMask = 1:x[2], type = "response", ...)
 }
 \arguments{
 \item{object}{\code{flowForest} object (as that created by the function \code{flowForest}), that will be used for prediction.}

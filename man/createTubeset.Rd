@@ -4,8 +4,13 @@
 \alias{createTubeset}
 \title{Convert a set of FCS files into a tubeset}
 \usage{
-createTubeset(fNamesInTubes, dirOut, reduce = 1, removeColumns = NULL,
-  verbose = FALSE)
+createTubeset(
+  fNamesInTubes,
+  dirOut,
+  reduce = 1,
+  removeColumns = NULL,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{fNamesInTubes}{A list of character vectors; n-th element corresponds to n-th tube, its m-th element is a path to an FCS file describing m-th object}
